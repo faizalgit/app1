@@ -2,7 +2,7 @@ node{
   stage('compile'){
     git 'https://github.com/faizalgit/app1'
     sh 'mvn install'
-    def readcounter = readFile(file: 'https://github.com/faizalgit/app1/version.txt')
+    def readcounter = readFile(file: 'https://github.com/faizalgit/app1/versionInfo.txt')
     echo readcounter
   }
   stage('upload to nexus'){
