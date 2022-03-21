@@ -1,3 +1,4 @@
+def version
 node{
   stage('compile'){
     git 'https://github.com/faizalgit/app1'
