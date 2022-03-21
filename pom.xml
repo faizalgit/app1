@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<!-- interesting -->
 	<groupId>com.mcnz.rps</groupId>
-	<artifactId>roshambo</artifactId>
+	<artifactId>roshamb</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>roshambo</name>
