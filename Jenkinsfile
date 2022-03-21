@@ -5,7 +5,7 @@ node{
     readcounter=readcounter.toInteger() +1
     def version= "Version" + readcounter
     println(version)
-    sh 'mvn install -Dversion=' + "${version}"
+    sh 'mvn package -Dversion=' + "${version}"
     writeFile(file: 'versionInfo.txt', text:readcounter.toString())
   }
   stage('upload to nexus'){
