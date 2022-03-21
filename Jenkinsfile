@@ -2,8 +2,7 @@ node{
   stage('compile'){
     git 'https://github.com/faizalgit/app1'
     sh 'mvn install'
-    def readcounter = readFile(file: 'versionInfo.txt')
-    sh 'echo $readcounter | awk -F= '{print $2}''
+    def readcounter = readFile(file: 'versionInfo.txt') | "awk -F= '{print $2}'".execute()
     echo readcounter
   }
   stage('upload to nexus'){
