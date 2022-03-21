@@ -4,7 +4,7 @@ node{
     git 'https://github.com/faizalgit/app1'
     def readcounter = readFile(file: 'versionInfo.txt')
     readcounter=readcounter.toInteger() +1
-    def version= "Version" + readcounter
+    version= "Version" + readcounter
     println(version)
     sh 'mvn package -Dversion=' + "${version}"
     writeFile(file: 'versionInfo.txt', text:readcounter.toString())
