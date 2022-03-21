@@ -7,7 +7,12 @@
 	<packaging>jar</packaging>
 
 	<name>roshambo</name>
+<properties>
+	<artifactversion>Version0</artifactversion>
+  </properties>
 
+  <build>
+    <finalName>roshambo-${artifactversion}</finalName>
 
 	<dependencies>
 		<dependency>
