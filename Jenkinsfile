@@ -15,7 +15,7 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-        withCredentials([sshUserPrivateKey(credentialsId: "FaizGit")]) {
+        withCredentials([sshUserPrivateKey(credentialsId: "FaizGit" , keyFileVariable: 'keyfile')]) {
           sh('git push https://${username}:${password}@github.com/faizalgit/app1')
          }
  
