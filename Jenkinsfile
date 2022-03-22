@@ -1,10 +1,11 @@
 def version
 node{
-            
-     stage('compile'){
+     
+    stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
       }
+                
     git credentialsId: 'FaizGit', url: 'https://github.com/faizalgit/app1'
     sh 'git clone https://github.com/faizalgit/app1'
     sh 'git status'
@@ -27,6 +28,7 @@ node{
                      sh('git push https://${username}:${password}@github.com/faizalgit/app1')
                  }
     }
+                        
     stage('upload to nexus'){
     echo '-------------------------'
     echo 'upload to nexus begins..'
