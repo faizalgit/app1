@@ -1,9 +1,6 @@
 def version
 node{
-   stage('PreCheck') {
-                scmSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
-  }
-  stage('compile'){
+     stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
       }
@@ -15,6 +12,11 @@ node{
     version= "Version" + readcounter
     println(version)
     sh 'mvn package -Dversion=' + "${version}"
+  }
+    stage('PreCheck') {
+                scmSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
+  }
+   stage('Version'){
     writeFile(file: 'versionInfo.txt', text:readcounter.toString())
     sh 'git status'
     sh 'git add versionInfo.txt'
@@ -22,8 +24,8 @@ node{
       withCredentials([usernamePassword(credentialsId: 'FaizalGit',
                  usernameVariable: 'username',
                  passwordVariable: 'password')]){
-      sh('git push https://${username}:${password}@github.com/faizalgit/app1')
-      }
+                     sh('git push https://${username}:${password}@github.com/faizalgit/app1')
+                 }
     }
   stage('upload to nexus'){
     echo '-------------------------'
