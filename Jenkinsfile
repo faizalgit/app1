@@ -2,9 +2,9 @@ def version
 node{
    
             stage('Checkout') {
-                steps {
+                
                     scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
-                }
+              
             }
     stage('compile'){
      if (fileExists('app1')) {
