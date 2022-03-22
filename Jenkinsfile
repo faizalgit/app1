@@ -16,7 +16,8 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-    GIT_CREDS = credentials('Git-Id')
+    GIT_CREDS = credentials(Git-Id)
+    echo GIT_CREDS
     sh 'git push https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@github.com/faizalgit/app1'
     
     }
