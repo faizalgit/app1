@@ -1,6 +1,7 @@
 def version
 node{
   stage('compile'){
+    sh 'rm -r app1'
     git 'https://github.com/faizalgit/app1'
     sh 'git clone https://github.com/faizalgit/app1'
     def readcounter = readFile(file: 'versionInfo.txt')
