@@ -1,12 +1,11 @@
 def version
 node{
-    stages {
+   
             stage('Checkout') {
                 steps {
                     scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
                 }
             }
-    }
     stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
