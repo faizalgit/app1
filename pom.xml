@@ -50,7 +50,7 @@
 			<repository>${docker.image.prefix}/${project.artifactId}</repository>
 			<buildArgs>${artifactversion}
 			    <!--<JAR_FILE>target/${version}.jar</JAR_FILE>-->
-				<finalName>rosambo-${version}</finalName>
+				<finalName>roshambo-${version}</finalName>
 			</buildArgs>
 		    </configuration>
 		</plugin>
