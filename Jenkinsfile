@@ -4,12 +4,14 @@ node{
     sh 'rm -r app1'
     git 'https://github.com/faizalgit/app1'
     sh 'git clone https://github.com/faizalgit/app1'
+    sh 'git status'
     def readcounter = readFile(file: 'versionInfo.txt')
     readcounter=readcounter.toInteger() +1
     version= "Version" + readcounter
     println(version)
     sh 'mvn package -Dversion=' + "${version}"
     writeFile(file: 'versionInfo.txt', text:readcounter.toString())
+    sh 'git status'
     }
   stage('upload to nexus'){
     echo '-------------------------'
