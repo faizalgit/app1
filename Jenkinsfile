@@ -3,7 +3,7 @@ node{
   stage('compile'){
     sh 'rm -r app1'
     git credentialsId: 'd8bd2da8-02f4-4142-9e3c-a01737564ed9', url: 'https://github.com/faizalgit/app1'
-    sh 'git clone https://github.com/faizalgit/app1'
+    sh 'git clone htgithubtps://.com/faizalgit/app1'
     sh 'git status'
     def readcounter = readFile(file: 'versionInfo.txt')
     readcounter=readcounter.toInteger() +1
@@ -14,7 +14,8 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-    sh 'git push https://github.com/faizalgit/app1'
+    GIT_CREDS = credentials('d8bd2da8-02f4-4142-9e3c-a01737564ed9')
+    sh 'git push https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@ithub.com/faizalgit/app1'
     
     }
   stage('upload to nexus'){
