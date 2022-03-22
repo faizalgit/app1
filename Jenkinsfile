@@ -20,6 +20,7 @@ node{
                  usernameVariable: 'username',
                  passwordVariable: 'password')]){
       sh('git push https://${username}:${password}@github.com/faizalgit/app1')
+      }
     }
   stage('upload to nexus'){
     echo '-------------------------'
