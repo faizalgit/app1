@@ -16,9 +16,11 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-    def GIT_CREDS = credentials('Git-Id')
-    echo GIT_CREDS
-    sh 'git push https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@github.com/faizalgit/app1'
+    withCredentials([usernamePassword(credentialsId: 'GIt-id',
+                 usernameVariable: 'username',
+                 passwordVariable: 'password')]){
+    sh("git push http://$username:$password@github.com/faizalgit/app1")
+}
     
     }
   stage('upload to nexus'){
