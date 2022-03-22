@@ -10,7 +10,7 @@ node{
     sh 'mvn package -Dversion=' + "${version}"
   }
     stage('PreCheck') {
-                scmSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
+                scmSkip(deleteBuild: true, skipPattern:'.*\\[no changes added to commit\\].*')
   }
    stage('Version'){
     def readcounter = readFile(file: 'versionInfo.txt')
