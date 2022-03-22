@@ -4,7 +4,6 @@ node{
      if (fileExists('app1')) {
        sh 'rm -r app1'
       }    
-    git credentialsId: 'd8bd2da8-02f4-4142-9e3c-a01737564ed9', url: 'https://github.com/faizalgit/app1'
     sh 'git clone https://github.com/faizalgit/app1'
     sh 'git status'
     def readcounter = readFile(file: 'versionInfo.txt')
@@ -19,7 +18,7 @@ node{
     withCredentials([usernamePassword(credentialsId: 'Git-Id',
                  usernameVariable: 'username',
                  passwordVariable: 'password')]){
-      sh('git push https://${'username'}:${'password'}@github.com/faizalgit/app1')
+      sh('git push https://${username}:${password}@github.com/faizalgit/app1')
 }
     
     }
