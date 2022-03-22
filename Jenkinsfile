@@ -16,7 +16,7 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-    sh 'git push'
+    sh 'git push -u origin master'
     }
   stage('upload to nexus'){
     echo '-------------------------'
