@@ -12,6 +12,7 @@ node{
     sh 'mvn package -Dversion=' + "${version}"
     writeFile(file: 'versionInfo.txt', text:readcounter.toString())
     sh 'git status'
+    sh 'git add versionInfo.txt'
     }
   stage('upload to nexus'){
     echo '-------------------------'
