@@ -1,6 +1,12 @@
 def version
 node{
-     stage('compile'){
+    stages {
+            stage('Checkout') {
+                steps {
+                    scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
+                }
+            }
+    stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
       }
@@ -9,9 +15,7 @@ node{
     sh 'git status'
     sh 'mvn package -Dversion=' + "${version}"
   }
-    stage('PreCheck') {
-                scmSkip(deleteBuild: true, skipPattern:'.*\\[no changes added to commit\\].*')
-  }
+  
    stage('Version'){
     def readcounter = readFile(file: 'versionInfo.txt')
     readcounter=readcounter.toInteger() +1
@@ -27,7 +31,7 @@ node{
                      sh('git push https://${username}:${password}@github.com/faizalgit/app1')
                  }
     }
-  stage('upload to nexus'){
+    stage('upload to nexus'){
     echo '-------------------------'
     echo 'upload to nexus begins..'
     println(version)
