@@ -1,8 +1,8 @@
 def version
 node{
             stage('Checkout') {
-               when {
-                  not { changeset pattern: "Jenkinsfile" }
+               when{
+                  not{ changeset pattern: "Jenkinsfile" }
                }
                scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
             }
