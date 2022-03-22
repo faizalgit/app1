@@ -27,7 +27,7 @@ node{
                   def commitInfo = commit.getCommitInfo()
                   
                   println(commitInfo)
-                  echo 'Following are the modified files'
+                  echo 'Following are the modified__files'
                   println(commitInfo.getCommitMessage())
                   println(commit.getChanges())
               }
