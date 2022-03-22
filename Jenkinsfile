@@ -1,7 +1,7 @@
 def version
 node{
    stage('PreCheck') {
-                mSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
+                scmSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
   }
   stage('compile'){
      if (fileExists('app1')) {
