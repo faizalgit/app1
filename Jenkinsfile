@@ -2,7 +2,7 @@ def version
 node{
    stage('PreCheck') {
                 steps {
-                    scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
+                    scmSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
                 }
             }
   stage('compile'){
