@@ -1,7 +1,7 @@
 def version
 node{
   stage('compile'){
-     if (fileExists(app1)) {
+     if (fileExists('app1') {
        sh 'rm -r app1'
       }
       else {
