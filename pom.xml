@@ -29,6 +29,7 @@
 					<path>/</path>
 					<port>8088</port>
 					<!-- name of Tomcat executable jar file -->
+					<!-- test test test -->
 					<finalName>executable.jar</finalName>
 				</configuration>
 		</plugin>
