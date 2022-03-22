@@ -1,16 +1,7 @@
 def version
 node{
             
-    stage ('precheck'){
-               def rc = sh(
-               script: "git status -s ${dir} | grep -q ${dir}",
-               returnStatus: true
-                        )
-                if(!rc) {
-                        scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
-                }           
-            }
-    stage('compile'){
+     stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
       }
@@ -18,6 +9,7 @@ node{
     sh 'git clone https://github.com/faizalgit/app1'
     sh 'git status'
     sh 'mvn package -Dversion=' + "${version}"
+    lastChanges()
   }
   
    stage('Version'){
