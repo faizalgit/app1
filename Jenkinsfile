@@ -7,16 +7,16 @@ node{
     git credentialsId: 'FaizGit', url: 'https://github.com/faizalgit/app1'
     sh 'git clone https://github.com/faizalgit/app1'
     sh 'git status'
-    def readcounter = readFile(file: 'versionInfo.txt')
-    readcounter=readcounter.toInteger() +1
-    version= "Version" + readcounter
-    println(version)
     sh 'mvn package -Dversion=' + "${version}"
   }
     stage('PreCheck') {
                 scmSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
   }
    stage('Version'){
+    def readcounter = readFile(file: 'versionInfo.txt')
+    readcounter=readcounter.toInteger() +1
+    version= "Version" + readcounter
+    println(version)
     writeFile(file: 'versionInfo.txt', text:readcounter.toString())
     sh 'git status'
     sh 'git add versionInfo.txt'
