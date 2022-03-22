@@ -1,10 +1,10 @@
 def version
 node{
-   
             stage('Checkout') {
-                
-                    scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
-              
+               when {
+                  not { changeset pattern: "Jenkinsfile" }
+               }
+               scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
             }
     stage('compile'){
      if (fileExists('app1')) {
