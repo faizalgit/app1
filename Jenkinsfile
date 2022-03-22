@@ -1,7 +1,13 @@
 def version
 node{
   stage('compile'){
-    sh 'rm -r app1'
+     if (fileExists()) {
+       sh 'rm -r app1'
+      }
+      else {
+          echo 'proceed to clone from git'
+      }
+    
     git credentialsId: 'd8bd2da8-02f4-4142-9e3c-a01737564ed9', url: 'https://github.com/faizalgit/app1'
     sh 'git clone htgithubtps://.com/faizalgit/app1'
     sh 'git status'
