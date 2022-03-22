@@ -16,8 +16,7 @@ node{
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
     sh 'git push https://github.com/faizalgit/app1'
-}
-    
+  
     }
   stage('upload to nexus'){
     echo '-------------------------'
