@@ -19,7 +19,7 @@ node{
     withCredentials([usernamePassword(credentialsId: 'Git-Id',
                  usernameVariable: 'username',
                  passwordVariable: 'password')]){
-      sh("git push https://${username}:${'password'}@github.com/faizalgit/app1")
+      sh("git push https://${username}:${"password"}@github.com/faizalgit/app1")
 }
     
     }
