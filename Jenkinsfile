@@ -14,6 +14,7 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
+    git_cred== credentials('d8bd2da8-02f4-4142-9e3c-a01737564ed9')
     sh 'git push origin master'
     
     }
