@@ -15,10 +15,11 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-      withCredentials([usernamePassword(credentialsId: 'FaizGit',
+        withCredentials([usernamePassword(credentialsId: 'FaizGit',
                  usernameVariable: 'username',
                  passwordVariable: 'password')]){
-      sh('git push https://${username}:${password}@github.com/faizalgit/app1')
+                    sh('git push https://${username}:${password}@github.com/faizalgit/app1')
+                }
   
     }
   stage('upload to nexus'){
