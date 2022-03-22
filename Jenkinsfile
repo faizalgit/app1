@@ -1,5 +1,10 @@
 def version
 node{
+   stage('PreCheck') {
+                steps {
+                    scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
+                }
+            }
   stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
