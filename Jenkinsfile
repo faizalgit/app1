@@ -1,11 +1,14 @@
 def version
 node{
             
-        when{
-            not{ changeset pattern: "Jenkinsfile" }
-            }
-            stage ('precheck'){
-               scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
+    stage ('precheck'){
+               def rc = sh(
+               script: "git status -s ${dir} | grep -q ${dir}",
+               returnStatus: true
+                        )
+                if(!rc) {
+                        scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
+                }           
             }
     stage('compile'){
      if (fileExists('app1')) {
