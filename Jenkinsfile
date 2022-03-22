@@ -3,7 +3,8 @@ node{
   stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
-      }    
+      }
+    git credentialsId: 'FaizGit', url: 'https://github.com/faizalgit/app1'
     sh 'git clone https://github.com/faizalgit/app1'
     sh 'git status'
     def readcounter = readFile(file: 'versionInfo.txt')
@@ -15,10 +16,7 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-        withCredentials([sshUserPrivateKey(credentialsId: "FaizGit" , keyFileVariable: 'keyfile')]) {
-          sh('git push https://${username}:${password}@github.com/faizalgit/app1')
-         }
- 
+    sh 'git push'
     }
   stage('upload to nexus'){
     echo '-------------------------'
