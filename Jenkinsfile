@@ -16,7 +16,7 @@ node{
     sh 'git status'
     sh 'git add versionInfo.txt'
     sh 'git commit -m "vertionInfo.txt updated and committed to Git"'
-    withCredentials([usernamePassword(credentialsId: 'GIt-id',
+    withCredentials([usernamePassword(credentialsId: 'Git-id',
                  usernameVariable: 'username',
                  passwordVariable: 'password')]){
     sh("git push http://$username:$password@github.com/faizalgit/app1")
