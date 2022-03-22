@@ -1,10 +1,8 @@
 def version
 node{
    stage('PreCheck') {
-                steps {
-                    scmSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
-                }
-            }
+                mSkip(deleteBuild: true, skipPattern:'.*\\[Nothing to compile\\].*')
+  }
   stage('compile'){
      if (fileExists('app1')) {
        sh 'rm -r app1'
