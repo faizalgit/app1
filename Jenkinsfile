@@ -48,6 +48,9 @@ node{
                               usernameVariable: 'username',
                               passwordVariable: 'password')]){
                               sh('git push https://${username}:${password}@github.com/faizalgit/app1')
+                              if (fileExists('modifiedFiles.txt')) {
+                                   sh 'rm -r modifiedFiles.txt'
+                              }
                          }
                   }
               
