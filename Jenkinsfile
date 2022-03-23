@@ -35,7 +35,7 @@ node{
                          echo modifiedFiles
                          println(commit.getChanges())
                   }
-                  if (modifiedFiles == "skip_build") {
+                  if (modifiedFiles.equals(skip_build)) {
                     echo 'i am in if_block'
                          } else {
                               writeFile(file: 'versionInfo.txt', text:readcounter.toString())
