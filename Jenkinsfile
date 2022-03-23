@@ -45,10 +45,11 @@ node{
                               withCredentials([usernamePassword(credentialsId: 'FaizalGit',
                               usernameVariable: 'username',
                               passwordVariable: 'password')]){
-                              sh('git push https://${username}:${password}@github.com/faizalgit/app1')
+                              sh('git push https://${username}:${password}@github.com/faizalgit/app1')}
                               if (fileExists('modifiedFiles.txt')) {
                                    sh 'rm -r modifiedFiles.txt'
                               }
+                                  
                          } else {
                               echo 'no code change detected..build will stop here'
                               sh 'false'
