@@ -29,9 +29,12 @@ node{
                   echo 'start__modified__files'
                   println(commitInfo.getCommitMessage())
                   writeFile(file: 'modifiedFiles.txt', text:commitInfo.getCommitMessage())
-                   modifiedFiles=readFile(file: 'modifiedFiles.txt')
-                  echo modifiedFiles
                   echo 'end__modified__files'
+                  modifiedFiles=readFile(file: 'modifiedFiles.txt')
+                  echo modifiedFiles
+                  if (modifiedFiles.size() == 0) {
+                  echo 'modified file is zero'
+                  }
                   println(commit.getChanges())
               }
       }
