@@ -1,6 +1,7 @@
 def version
 def readcounter
 def modifiedFiles
+def skipBuild
 node{
      stage('compile'){
           if (fileExists('app1')) {
@@ -35,11 +36,9 @@ node{
                          echo modifiedFiles
                          println(commit.getChanges())
                   }
-                  def skipBuild
-                    skipBuild="skip_build"
+                  
+                  skipBuild="skip_build"
                   if (skipBuild.equals(modifiedFiles)) {
-                    echo 'i am in if_block'
-                         } else {
                               writeFile(file: 'versionInfo.txt', text:readcounter.toString())
                               sh 'git status'
                               sh 'git add versionInfo.txt'
@@ -51,6 +50,9 @@ node{
                               if (fileExists('modifiedFiles.txt')) {
                                    sh 'rm -r modifiedFiles.txt'
                               }
+                         } else {
+                              echo 'no code change detected..build will stop here'
+                              sh 'false'
                          }
                   }
               
