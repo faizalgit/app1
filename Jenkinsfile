@@ -28,6 +28,7 @@ node{
                   println(commitInfo)
                   echo 'start__modified__files'
                   println(commitInfo.getCommitMessage())
+                  writeFile(file: 'modifiedFiles.txt', text:commitInfo.getCommitMessage())
                   echo 'end__modified__files'
                   println(commit.getChanges())
               }
