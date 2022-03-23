@@ -52,7 +52,6 @@ node{
                          } else {
                               echo 'no code change detected..build will stop here'
                               sh 'false'
-                              }
                     }
     }                           
     stage('upload to nexus'){
