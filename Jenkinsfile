@@ -17,7 +17,7 @@ node{
     sh 'mvn package -Dversion=' + "${version}"
     lastChanges()
   }
-   stage("last-changes") {
+   stage("Check for Code Change") {
         def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
               publisher.publishLastChanges()
               def changes = publisher.getLastChanges()
@@ -25,7 +25,6 @@ node{
               for (commit in changes.getCommits()) {
                   println(commit)
                   def commitInfo = commit.getCommitInfo()
-                  
                   println(commitInfo)
                   echo 'start__modified__files'
                   println(commitInfo.getCommitMessage())
