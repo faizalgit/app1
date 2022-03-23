@@ -31,7 +31,7 @@ node{
                          println(commitInfo)
                          println(commitInfo.getCommitMessage())
                          writeFile(file: 'modifiedFiles.txt', text:commitInfo.getCommitMessage())
-                         modifiedFiles=readFile(file: 'modifiedFiles.txt')
+                         modifiedFiles=readFile(file: 'modifiedFiles.txt').trim()
                          echo modifiedFiles
                          println(commit.getChanges())
                   }
