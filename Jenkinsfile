@@ -34,26 +34,23 @@ node{
                          echo modifiedFiles
                          println(commit.getChanges())
                   }
-                  if (modifiedFiles == 'skip_build') {
+                  if (modifiedFiles == "skip_build") {
                     echo 'i am in if_block'
                          } else {
-                         echo 'i am in else_block'
+                              writeFile(file: 'versionInfo.txt', text:readcounter.toString())
+                              sh 'git status'
+                              sh 'git add versionInfo.txt'
+                              sh 'git commit -m "skip_build"'
+                              withCredentials([usernamePassword(credentialsId: 'FaizalGit',
+                              usernameVariable: 'username',
+                              passwordVariable: 'password')]){
+                              sh('git push https://${username}:${password}@github.com/faizalgit/app1')
+                         }
                   }
               
       }
   
-   stage('Version'){
-          writeFile(file: 'versionInfo.txt', text:readcounter.toString())
-          sh 'git status'
-          sh 'git add versionInfo.txt'
-          sh 'git commit -m "skip_build"'
-          withCredentials([usernamePassword(credentialsId: 'FaizalGit',
-          usernameVariable: 'username',
-          passwordVariable: 'password')]){
-               sh('git push https://${username}:${password}@github.com/faizalgit/app1')
-          }
-    }
-                        
+                           
     stage('upload to nexus'){
           echo '-------------------------'
           echo 'upload to nexus begins..'
