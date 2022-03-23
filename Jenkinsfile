@@ -40,7 +40,7 @@ node{
           sh 'git commit -m "skip_build"'
           withCredentials([usernamePassword(credentialsId: 'FaizalGit',
           usernameVariable: 'username',
-          passwordVariable: 'password']){
+          passwordVariable: 'password')]){
                sh('git push https://${username}:${password}@github.com/faizalgit/app1')
           }
     }
