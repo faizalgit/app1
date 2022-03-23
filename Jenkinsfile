@@ -17,14 +17,24 @@ node{
     }
      
    stage("Check for Code Change") {
-              sh 'git commit -m "skip_build"'
-                  writeFile(file: 'modifiedFiles.txt', text:commitInfo.getCommitMessage())
-                  modifiedFiles=readFile(file: 'modifiedFiles.txt')
-                  echo modifiedFiles
-                  if (modifiedFiles == 'skip_build') {
-                  echo 'i am in if_block'
-                  } else {
-                       echo 'i am in else_block'
+                  def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
+                  publisher.publishLastChanges()
+                  def changes = publisher.getLastChanges()
+                  println(changes.getEscapedDiff())
+                  for (commit in changes.getCommits()) {
+                         println(commit)
+                         def commitInfo = commit.getCommitInfo()
+                         println(commitInfo)
+                         println(commitInfo.getCommitMessage())
+                         writeFile(file: 'modifiedFiles.txt', text:commitInfo.getCommitMessage())
+                         modifiedFiles=readFile(file: 'modifiedFiles.txt')
+                         echo modifiedFiles
+                         println(commit.getChanges())
+                  }
+                  if (modifiedFiles == '') {
+                    echo 'i am in if_block'
+                         } else {
+                         echo 'i am in else_block'
                   }
               
       }
