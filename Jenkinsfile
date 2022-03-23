@@ -17,10 +17,7 @@ node{
     }
      
    stage("Check for Code Change") {
-        def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
-              publisher.publishLastChanges()
-              def changes = publisher.getLastChanges()
-              println(changes.getEscapedDiff())
+              sh 'git commit -m "skip_build"'
               for (commit in changes.getCommits()) {
                   println(commit)
                   def commitInfo = commit.getCommitInfo()
