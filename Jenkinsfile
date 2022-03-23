@@ -32,7 +32,7 @@ node{
                   echo 'end__modified__files'
                   modifiedFiles=readFile(file: 'modifiedFiles.txt')
                   echo modifiedFiles
-                  if (modifiedFiles == 'skip_build') {
+                  if (modifiedFiles.equalsIgnorecase("skip_build") == true) {
                   echo 'modified file is zero'
                   }
                   println(commit.getChanges())
