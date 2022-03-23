@@ -1,5 +1,6 @@
 def version
 def readcounter
+def modifiedFiles
 node{
      stage('compile'){
           if (fileExists('app1')) {
@@ -30,7 +31,7 @@ node{
                          println(commitInfo)
                          println(commitInfo.getCommitMessage())
                          writeFile(file: 'modifiedFiles.txt', text:commitInfo.getCommitMessage())
-                         def  modifiedFiles=readFile(file: 'modifiedFiles.txt')
+                         modifiedFiles=readFile(file: 'modifiedFiles.txt')
                          echo modifiedFiles
                          println(commit.getChanges())
                   }
