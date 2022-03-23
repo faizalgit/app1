@@ -3,7 +3,7 @@ def readcounter
 def modifiedFiles
 def skipBuild
 node{
-     stage('compile'){
+    stage('compile'){
           if (fileExists('app1')) {
           sh 'rm -r app1'
           }
@@ -16,8 +16,7 @@ node{
           println(version)
           sh 'mvn package -Dversion=' + "${version}"
           lastChanges()
-    }
-     
+   }
    stage("Check for Code Change") {
                   if (fileExists('modifiedFiles.txt')) {
                     sh 'rm -r modifiedFiles.txt'
@@ -53,16 +52,13 @@ node{
                          } else {
                               echo 'no code change detected..build will stop here'
                               sh 'false'
-                         }
-                  }
-              
-      }
-  
-                           
+                              }
+                    }
+    }                           
     stage('upload to nexus'){
           echo '-------------------------'
           echo 'upload to nexus begins..'
           println(version)
           nexusArtifactUploader artifacts: [[artifactId: 'roshambo', classifier: '', file: 'target/roshambo-'+version+'.jar', type: 'jar']], credentialsId: 'nexus-upload', groupId: 'com.mcnz.rps', nexusUrl: '34.125.172.8:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-nexus-repo', version: version
-     }
+    }
 }
