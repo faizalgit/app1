@@ -34,7 +34,7 @@ node{
                          echo modifiedFiles
                          println(commit.getChanges())
                   }
-                  if (modifiedFiles == '') {
+                  if (modifiedFiles == 'skip_build') {
                     echo 'i am in if_block'
                          } else {
                          echo 'i am in else_block'
@@ -46,7 +46,7 @@ node{
           writeFile(file: 'versionInfo.txt', text:readcounter.toString())
           sh 'git status'
           sh 'git add versionInfo.txt'
-          sh 'git commit -m "commit versionInfo.txt"'
+          sh 'git commit -m "skip_build"'
           withCredentials([usernamePassword(credentialsId: 'FaizalGit',
           usernameVariable: 'username',
           passwordVariable: 'password')]){
