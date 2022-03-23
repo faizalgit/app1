@@ -17,6 +17,9 @@ node{
     }
      
    stage("Check for Code Change") {
+                  if (fileExists('modifiedFiles.txt')) {
+                    sh 'rm -r modifiedFiles.txt'
+                  }
                   def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
                   publisher.publishLastChanges()
                   def changes = publisher.getLastChanges()
