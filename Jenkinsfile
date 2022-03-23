@@ -46,7 +46,7 @@ node{
           writeFile(file: 'versionInfo.txt', text:readcounter.toString())
           sh 'git status'
           sh 'git add versionInfo.txt'
-          sh 'git commit -m ""'
+          sh 'git commit -m "commit versionInfo.txt"'
           withCredentials([usernamePassword(credentialsId: 'FaizalGit',
           usernameVariable: 'username',
           passwordVariable: 'password')]){
