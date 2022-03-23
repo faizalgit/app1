@@ -32,7 +32,7 @@ node{
                   echo 'end__modified__files'
                   modifiedFiles=readFile(file: 'modifiedFiles.txt')
                   echo modifiedFiles
-                  if (modifiedFiles == "skip_build") {
+                  if (modifiedFiles == 'skip_build') {
                   echo 'i am in if_block'
                   } else {
                        echo 'i am in else_block'
